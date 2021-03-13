@@ -1,0 +1,151 @@
+output frequency: 1
+structural node: 0 0 0 0 
+structural node: 1 0 0 0 
+structural node: 2 0 0 0 
+structural node: 3 0 0 0 
+structural node: 4 0 0 0 
+structural node: 5 0 0 0 
+structural node: 6 0 0 0 
+structural node: 7 0 0 0 
+structural node: 8 0 0 0 
+structural node: 9 0 0 0 
+body: 0 0 10 0 0 0 0 0 0 0 0 0 0 0 0
+body: 1 1 10 0 0 0 0 0 0 0 0 0 0 0 0
+body: 2 2 10 0 0 0 0 0 0 0 0 0 0 0 0
+body: 3 3 10 0 0 0 0 0 0 0 0 0 0 0 0
+body: 4 4 10 0 0 0 0 0 0 0 0 0 0 0 0
+body: 5 5 10 0 0 0 0 0 0 0 0 0 0 0 0
+body: 6 6 10 0 0 0 0 0 0 0 0 0 0 0 0
+body: 7 7 10 0 0 0 0 0 0 0 0 0 0 0 0
+body: 8 8 10 0 0 0 0 0 0 0 0 0 0 0 0
+body: 9 9 10 0 0 0 0 0 0 0 0 0 0 0 0
+struct node dofs:
+struct node eqs:
+struct node momentum dofs:
+struct node momentum eqs:
+struct displacement node dofs: 0 6 12 18 24 30 36 42 48 54
+struct displacement node eqs: 3 9 15 21 27 33 39 45 51 57
+struct displacement node momentum dofs: 3 9 15 21 27 33 39 45 51 57
+struct displacement node momentum eqs: 0 6 12 18 24 30 36 42 48 54
+struct node labels:
+struct displacement node labels: 0 1 2 3 4 5 6 7 8 9
+Symbol table:
+  const integer BODY_0 = 0
+  const integer BODY_1 = 1
+  const integer BODY_2 = 2
+  const integer BODY_3 = 3
+  const integer BODY_4 = 4
+  const integer BODY_5 = 5
+  const integer BODY_6 = 6
+  const integer BODY_7 = 7
+  const integer BODY_8 = 8
+  const integer BODY_9 = 9
+  const bool FALSE = 0
+  const integer INT_MAX = 2147483647
+  const integer INT_MIN = -2147483648
+  const real M = 10.
+  const integer N = 10
+  const integer NODE_0 = 0
+  const integer NODE_1 = 1
+  const integer NODE_2 = 2
+  const integer NODE_3 = 3
+  const integer NODE_4 = 4
+  const integer NODE_5 = 5
+  const integer NODE_6 = 6
+  const integer NODE_7 = 7
+  const integer NODE_8 = 8
+  const integer NODE_9 = 9
+  const integer RAND_MAX = 2147483647
+  const real REAL_MAX = 1.79769e+308
+  const real REAL_MIN = 2.22507e-308
+  integer Step = 0
+  const bool TRUE = 1
+  real Time = 0.
+  real TimeStep = 0.
+  real Var = 0.
+  const integer Vy_0 = 5
+  const integer Vy_1 = 2
+  const integer Vy_2 = 2
+  const integer Vy_3 = 0
+  const integer Vy_4 = 0
+  const integer Vy_5 = 4
+  const integer Vy_6 = 4
+  const integer Vy_7 = 2
+  const integer Vy_8 = 5
+  const integer Vy_9 = 2
+  const integer Vz_0 = 2
+  const integer Vz_1 = 5
+  const integer Vz_2 = 5
+  const integer Vz_3 = 1
+  const integer Vz_4 = 0
+  const integer Vz_5 = 4
+  const integer Vz_6 = 5
+  const integer Vz_7 = 4
+  const integer Vz_8 = 3
+  const integer Vz_9 = 3
+  const real deg2rad = 0.0174533
+  const real e = 2.71828
+  const real ft2m = 0.3048
+  const real in2m = 0.0254
+  const real in2mm = 25.4
+  const real kg2lb = 2.20462
+  const real kg2slug = 0.0685218
+  const real lb2kg = 0.453592
+  const real m2ft = 3.28084
+  const real m2in = 39.3701
+  const real mm2in = 0.0393701
+  const real pi = 3.14159
+  const real rad2deg = 57.2958
+  const real slug2kg = 14.5939
+Environment:
+  SHELL=/bin/bash
+  SESSION_MANAGER=local/paritosh-wankhade:@/tmp/.ICE-unix/1391,unix/paritosh-wankhade:/tmp/.ICE-unix/1391
+  QT_ACCESSIBILITY=1
+  COLORTERM=truecolor
+  XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/etc/xdg
+  XDG_MENU_PREFIX=gnome-
+  GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+  GTK_IM_MODULE=ibus
+  LANGUAGE=en_IN:en
+  QT4_IM_MODULE=ibus
+  GNOME_SHELL_SESSION_MODE=ubuntu
+  SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
+  XMODIFIERS=@im=ibus
+  DESKTOP_SESSION=ubuntu
+  SSH_AGENT_PID=1298
+  GTK_MODULES=gail:atk-bridge
+  PWD=/home/aspire/Music
+  LOGNAME=aspire
+  XDG_SESSION_DESKTOP=ubuntu
+  XDG_SESSION_TYPE=x11
+  GPG_AGENT_INFO=/run/user/1000/gnupg/S.gpg-agent:0:1
+  XAUTHORITY=/run/user/1000/gdm/Xauthority
+  WINDOWPATH=2
+  HOME=/home/aspire
+  USERNAME=aspire
+  IM_CONFIG_PHASE=1
+  LANG=en_IN
+  LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+  XDG_CURRENT_DESKTOP=ubuntu:GNOME
+  VTE_VERSION=6003
+  GNOME_TERMINAL_SCREEN=/org/gnome/Terminal/screen/9122ebcf_a6ef_4243_942d_39ef510bb03c
+  INVOCATION_ID=f4d5d96149524b308c4468e4060171d1
+  MANAGERPID=1004
+  CLUTTER_IM_MODULE=ibus
+  LESSCLOSE=/usr/bin/lesspipe %s %s
+  XDG_SESSION_CLASS=user
+  TERM=xterm-256color
+  LESSOPEN=| /usr/bin/lesspipe %s
+  USER=aspire
+  GNOME_TERMINAL_SERVICE=:1.600
+  DISPLAY=:0
+  SHLVL=1
+  QT_IM_MODULE=ibus
+  XDG_RUNTIME_DIR=/run/user/1000
+  JOURNAL_STREAM=8:40346
+  XDG_DATA_DIRS=/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
+  PATH=/home/aspire/.local/bin:/home/aspire/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+  GDMSESSION=ubuntu
+  DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+  _=/home/aspire/bin/mbdyn
+  OLDPWD=/home/aspire
