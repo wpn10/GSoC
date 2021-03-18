@@ -1,0 +1,293 @@
+begin: data; 
+   problem: initial value; 
+end: data; 
+ 
+begin: initial value; 
+   initial time:   0.; 
+   final time:     5.; 
+   time step:      1.e-3; 
+   max iterations: 10; 
+   tolerance:      1.e-6; 
+end: initial value; 
+ 
+#python #beginpreprocess at py_npen.mbd:13
+
+#python 1 # from __future__ import print_function, division 
+#python 2 # from MBDynLib import * 
+#python 3 # from math import pi 
+#python 4 #  
+#python 5 # ConstMBVar('M', 'real', 1.0) 
+#python 6 # ConstMBVar('L', 'real', 1.0) 
+#python 7 #  
+#python 8 # ConstMBVar('N', 'integer', 5) 
+#python 9 # for i in range(N): 
+#python 10 #   ConstMBVar('theta' + str(i), 'real', pi/N) 
+#python 11 #  
+#python #endpreprocess at py_npen.mbd:25
+
+set: const real M = 1.0;
+set: const real L = 1.0;
+set: const integer N = 5;
+set: const real theta0 = 3.141592653589793 / N;
+set: const real theta1 = 3.141592653589793 / N;
+set: const real theta2 = 3.141592653589793 / N;
+set: const real theta3 = 3.141592653589793 / N;
+set: const real theta4 = 3.141592653589793 / N;
+ 
+begin: control data; 
+   structural nodes: N; 
+   rigid bodies:     N; 
+   joints:           N; 
+   gravity; 
+end: control data; 
+ 
+#python #beginpreprocess at py_npen.mbd:34
+
+#python 1 #  
+#python 2 # for i in range(N): 
+#python 3 #   ConstMBVar('Ref_Link' + str(i), 'integer', i) 
+#python 4 #    
+#python 5 # for i in range(N): 
+#python 6 #   ConstMBVar('Node_Link' + str(i), 'integer', i) 
+#python 7 #    
+#python 8 # for i in range(N): 
+#python 9 #   ConstMBVar('Body_Link' + str(i), 'integer', i) 
+#python 10 #    
+#python 11 #  
+#python 12 # ConstMBVar('JoRevp_Link0', 'integer', 0) 
+#python 13 # for i in range(N-1): 
+#python 14 #   ConstMBVar('JoRevh_Link'+str(i)+'_Link'+str(i+1), 'integer',i+1) 
+#python 15 #    
+#python 16 # nodes = [] 
+#python 17 # bodies = [] 
+#python 18 # refs = [] 
+#python 19 # joints=[] 
+#python #endpreprocess at py_npen.mbd:54
+
+set: const integer Ref_Link0 = 0;
+set: const integer Ref_Link1 = 1;
+set: const integer Ref_Link2 = 2;
+set: const integer Ref_Link3 = 3;
+set: const integer Ref_Link4 = 4;
+set: const integer Node_Link0 = 0;
+set: const integer Node_Link1 = 1;
+set: const integer Node_Link2 = 2;
+set: const integer Node_Link3 = 3;
+set: const integer Node_Link4 = 4;
+set: const integer Body_Link0 = 0;
+set: const integer Body_Link1 = 1;
+set: const integer Body_Link2 = 2;
+set: const integer Body_Link3 = 3;
+set: const integer Body_Link4 = 4;
+set: const integer JoRevp_Link0 = 0;
+set: const integer JoRevh_Link0_Link1 = 1;
+set: const integer JoRevh_Link1_Link2 = 2;
+set: const integer JoRevh_Link2_Link3 = 3;
+set: const integer JoRevh_Link3_Link4 = 4;
+ 
+reference: Ref_Link0, 
+   null,                        # absolute position 
+   euler, 0., pi/2.-theta0, 0., # absolute orientation 
+   null,                        # absolute velocity 
+   null; 
+    
+#python #beginpreprocess at py_npen.mbd:62
+
+#python 1 # for i in range(1,N): 
+#python 2 # 	RelRefPos = Position('Ref_Link'+str(i-1), "L, 0., 0.") 
+#python 3 # 	RelRefOri = Position('Ref_Link'+str(i-1), "euler, 0., -theta"+str(i)+", 0.") 
+#python 4 # 	RelRefVel = Position('Ref_Link'+str(i-1), null()) 
+#python 5 # 	refs.append(Reference('Ref_Link'+str(i), RelRefOri, RelRefVel, RelRefVel, RelRefPos)) 
+#python 6 #  
+#python 7 # 	 
+#python 8 #  
+#python #endpreprocess at py_npen.mbd:71
+
+ 
+#python #beginpreprocess at py_npen.mbd:73
+
+#python 1 # [print(d) for d in refs] 
+#python #endpreprocess at py_npen.mbd:75
+
+
+reference:	Ref_Link1,
+	reference, Ref_Link0, L, 0., 0.,
+	reference, Ref_Link0, euler, 0., -theta1, 0.,
+	reference, Ref_Link0, null,
+	reference, Ref_Link0, null;
+
+
+reference:	Ref_Link2,
+	reference, Ref_Link1, L, 0., 0.,
+	reference, Ref_Link1, euler, 0., -theta2, 0.,
+	reference, Ref_Link1, null,
+	reference, Ref_Link1, null;
+
+
+reference:	Ref_Link3,
+	reference, Ref_Link2, L, 0., 0.,
+	reference, Ref_Link2, euler, 0., -theta3, 0.,
+	reference, Ref_Link2, null,
+	reference, Ref_Link2, null;
+
+
+reference:	Ref_Link4,
+	reference, Ref_Link3, L, 0., 0.,
+	reference, Ref_Link3, euler, 0., -theta4, 0.,
+	reference, Ref_Link3, null,
+	reference, Ref_Link3, null;
+
+ 
+#python #beginpreprocess at py_npen.mbd:77
+
+#python 1 # for i in range(N): 
+#python 2 # 	RelNodePos = Position('Ref_Link'+str(i), "1./2.*L, 0., 0.") 
+#python 3 # 	RelNodeOri = Position('Ref_Link'+str(i), eye()) 
+#python 4 # 	RelNodeVel = Position('Ref_Link'+str(i), null()) 
+#python 5 # 	nodes.append(DynamicNode('Node_Link'+str(i), RelNodePos, RelNodeOri, RelNodeVel, RelNodeVel)) 
+#python 6 #  
+#python 7 # for i in range(N): 
+#python 8 # 	RelBodyPos = Position('', null()) 
+#python 9 # 	bodies.append(Body('Body_Link'+str(i), nodes[i].idx, 'M', RelBodyPos, ['diag,' ' 0.,' ' M*L^2./12.,' ' M*L^2./12.'])) 
+#python 10 # 	 
+#python 11 # for i in range(N-1): 
+#python 12 #    RefNull = Position('', null()) 
+#python 13 #    joints.append(JointRH('JoRevh_Link'+str(i)+'_Link'+str(i+1), 'Node_Link'+str(i), 'Node_Link'+str(i+1), 'Ref_Link'+str(i+1), "1, 1., 0., 0., 3, 0., 1., 0.",RefNull)) 
+#python 14 #  
+#python #endpreprocess at py_npen.mbd:92
+
+ 
+ 
+begin: nodes; 
+ 
+#python #beginpreprocess at py_npen.mbd:97
+
+#python 1 # [print(d) for d in nodes] 
+#python #endpreprocess at py_npen.mbd:99
+
+structural: Node_Link0, dynamic,
+	reference, Ref_Link0, 1./2.*L, 0., 0.,
+	reference, Ref_Link0, eye,
+	reference, Ref_Link0, null,
+	reference, Ref_Link0, null;
+
+structural: Node_Link1, dynamic,
+	reference, Ref_Link1, 1./2.*L, 0., 0.,
+	reference, Ref_Link1, eye,
+	reference, Ref_Link1, null,
+	reference, Ref_Link1, null;
+
+structural: Node_Link2, dynamic,
+	reference, Ref_Link2, 1./2.*L, 0., 0.,
+	reference, Ref_Link2, eye,
+	reference, Ref_Link2, null,
+	reference, Ref_Link2, null;
+
+structural: Node_Link3, dynamic,
+	reference, Ref_Link3, 1./2.*L, 0., 0.,
+	reference, Ref_Link3, eye,
+	reference, Ref_Link3, null,
+	reference, Ref_Link3, null;
+
+structural: Node_Link4, dynamic,
+	reference, Ref_Link4, 1./2.*L, 0., 0.,
+	reference, Ref_Link4, eye,
+	reference, Ref_Link4, null,
+	reference, Ref_Link4, null;
+
+ 
+end: nodes; 
+ 
+begin: elements; 
+ 
+#python #beginpreprocess at py_npen.mbd:105
+
+#python 1 # [print('\t',d) for d in bodies] 
+#python #endpreprocess at py_npen.mbd:107
+
+	 body: Body_Link0, Node_Link0,
+	M,
+	null,
+	diag, 0., M*L^2./12., M*L^2./12.;
+
+	 body: Body_Link1, Node_Link1,
+	M,
+	null,
+	diag, 0., M*L^2./12., M*L^2./12.;
+
+	 body: Body_Link2, Node_Link2,
+	M,
+	null,
+	diag, 0., M*L^2./12., M*L^2./12.;
+
+	 body: Body_Link3, Node_Link3,
+	M,
+	null,
+	diag, 0., M*L^2./12., M*L^2./12.;
+
+	 body: Body_Link4, Node_Link4,
+	M,
+	null,
+	diag, 0., M*L^2./12., M*L^2./12.;
+
+ 
+ joint: JoRevp_Link0,  
+      revolute pin,  
+         Node_Link0,  
+            reference, Ref_Link0, null,                                # relative offset 
+            hinge, reference, Ref_Link0, 1, 1., 0., 0., 3, 0., 1., 0., # relative axis orientation 
+            reference, Ref_Link0, null,                                # absolute pin position 
+            hinge, reference, Ref_Link0, 1, 1., 0., 0., 3, 0., 1., 0.; # absolute pin orientation 
+ 
+#python #beginpreprocess at py_npen.mbd:117
+
+#python 1 # [print('\t',d) for d in joints] 
+#python #endpreprocess at py_npen.mbd:119
+
+	 
+joint:	JoRevh_Link0_Link1,
+	revolute hinge,
+	Node_Link0,
+		reference, Ref_Link1, null,
+		hinge, reference, Ref_Link1, 1, 1., 0., 0., 3, 0., 1., 0.,
+	Node_Link1,
+		reference, Ref_Link1, null,
+		hinge, reference, Ref_Link1, 1, 1., 0., 0., 3, 0., 1., 0.;
+
+	 
+joint:	JoRevh_Link1_Link2,
+	revolute hinge,
+	Node_Link1,
+		reference, Ref_Link2, null,
+		hinge, reference, Ref_Link2, 1, 1., 0., 0., 3, 0., 1., 0.,
+	Node_Link2,
+		reference, Ref_Link2, null,
+		hinge, reference, Ref_Link2, 1, 1., 0., 0., 3, 0., 1., 0.;
+
+	 
+joint:	JoRevh_Link2_Link3,
+	revolute hinge,
+	Node_Link2,
+		reference, Ref_Link3, null,
+		hinge, reference, Ref_Link3, 1, 1., 0., 0., 3, 0., 1., 0.,
+	Node_Link3,
+		reference, Ref_Link3, null,
+		hinge, reference, Ref_Link3, 1, 1., 0., 0., 3, 0., 1., 0.;
+
+	 
+joint:	JoRevh_Link3_Link4,
+	revolute hinge,
+	Node_Link3,
+		reference, Ref_Link4, null,
+		hinge, reference, Ref_Link4, 1, 1., 0., 0., 3, 0., 1., 0.,
+	Node_Link4,
+		reference, Ref_Link4, null,
+		hinge, reference, Ref_Link4, 1, 1., 0., 0., 3, 0., 1., 0.;
+
+ 
+     
+   gravity: 0., 0., -1., const, 9.81; 
+    
+end: elements; 
+
+
